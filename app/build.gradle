@@ -3,6 +3,7 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'kotlin-android-extensions'
+    id 'dagger.hilt.android.plugin'
 }
 
 Properties properties = new Properties()
@@ -79,6 +80,18 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.4.0'
     implementation 'androidx.lifecycle:lifecycle-service:2.4.0'
 
+    // Fragment KTX
+    implementation 'androidx.fragment:fragment-ktx:1.4.0'
+
+    // Activity KTX for viewModels
+    implementation "androidx.activity:activity-ktx:1.4.0"
+
+    // Dagger - Hilt
+    implementation 'com.google.dagger:hilt-android:2.40.4'
+    kapt 'com.google.dagger:hilt-compiler:2.40.4'
+
+    implementation 'androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03'
+    kapt 'androidx.hilt:hilt-compiler:1.0.0'
 
     // Timber logger
     implementation 'com.jakewharton.timber:timber:5.0.1'
