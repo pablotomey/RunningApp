@@ -6,5 +6,5 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class MainViewModel @Inject constructor(val mainRepository: MainRepository): ViewModel() {
+class StatisticsViewModel @Inject constructor(mainRepository: MainRepository): ViewModel() {
 }
