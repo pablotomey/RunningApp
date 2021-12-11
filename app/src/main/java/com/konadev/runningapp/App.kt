@@ -2,7 +2,15 @@ package com.konadev.runningapp
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp
+import timber.log.Timber
 
 @HiltAndroidApp
 class App: Application() {
+
+    override fun onCreate() {
+        super.onCreate()
+        // init Timber log
+        Timber.plant(Timber.DebugTree())
+    }
+
 }
