@@ -17,11 +17,11 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun provideRunningDataBase(@ApplicationContext app: Context) {
+    fun provideRunningDataBase(@ApplicationContext app: Context) =
         Room.databaseBuilder(
             app, RunningDataBase::class.java, RUNNING_DATABASE_NAME
         ).build()
-    }
+
 
     @Singleton
     @Provides
