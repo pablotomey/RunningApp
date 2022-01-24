@@ -70,10 +70,12 @@ class TrackingService: LifecycleService() {
                         isFirstRun = false
                     } else {
                         Timber.d("RESUMING TRACKING SERVICE...")
+                        startForegroundService()
                     }
                 }
                 ACTION_PAUSE_SERVICE -> {
                     Timber.d("PAUSED TRACKING SERVICE")
+                    pauseService()
                 }
                 ACTION_STOP_SERVICE -> {
                     Timber.d("STOPPED TRACKING SERVICE")
@@ -131,6 +133,10 @@ class TrackingService: LifecycleService() {
         add(mutableListOf())
         pathPoints.postValue(this)
     } ?: pathPoints.postValue(mutableListOf(mutableListOf()))
+
+    private fun pauseService() {
+        isTracking.postValue(false)
+    }
 
     private fun startForegroundService() {
         addEmptyPolyline()
