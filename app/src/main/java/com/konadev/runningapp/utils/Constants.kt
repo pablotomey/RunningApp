@@ -13,6 +13,7 @@ object Constants {
     const val NOTIFICATION_CHANNEL_ID = "tracking_channel"
     const val NOTIFICATION_CHANNEL_NAME = "Tracking"
     const val NOTIFICATION_ID = 1
+    const val TIMER_UPDATE_INTERVAL = 50L
 
     const val POLYLINE_COLOR = Color.RED
     const val POLYLINE_WIDTH = 8f

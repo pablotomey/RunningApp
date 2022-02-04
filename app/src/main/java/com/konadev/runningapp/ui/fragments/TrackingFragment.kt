@@ -19,6 +19,7 @@ import com.konadev.runningapp.utils.Constants.ACTION_START_OR_RESUME_SERVICE
 import com.konadev.runningapp.utils.Constants.MAP_ZOOM
 import com.konadev.runningapp.utils.Constants.POLYLINE_COLOR
 import com.konadev.runningapp.utils.Constants.POLYLINE_WIDTH
+import com.konadev.runningapp.utils.TrackingUtility
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_tracking.*
 
@@ -29,6 +30,8 @@ class TrackingFragment: Fragment(R.layout.fragment_tracking) {
 
     private var isTracking = false
     private var pathPoints = mutableListOf<Polyline>()
+
+    private var currentTimeInMillis = 0L
 
     private var map: GoogleMap? = null
 
@@ -57,6 +60,12 @@ class TrackingFragment: Fragment(R.layout.fragment_tracking) {
             pathPoints = it
             addLatestPolyline()
             moveCameraToUser()
+        })
+
+        TrackingService.timeRunInMillis.observe( viewLifecycleOwner, {
+            currentTimeInMillis = it
+            val formattedTime = TrackingUtility.getFormattedStopWatchTime(currentTimeInMillis, true)
+            tvTimer.text = formattedTime
         })
     }
 
