@@ -9,7 +9,9 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class MainViewModel @Inject constructor(val mainRepository: MainRepository): ViewModel() {
+class MainViewModel @Inject constructor(private val mainRepository: MainRepository): ViewModel() {
+
+    val runsSortedByDate = mainRepository.getAllRunsSortedByDate()
 
     fun insertRun(run: Run) {
         viewModelScope.launch {
